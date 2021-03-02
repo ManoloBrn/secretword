@@ -21,20 +21,15 @@ contract SecretWord {
     }
     
     function findWord(string memory _word) public payable returns (bool){
-        
         if(getWord() == keccak256(abi.encodePacked(_word))){
             return payable(msg.sender).send(address(this).balance);
-            
         }
         return false;
-        
     }
     
     function setReward() public payable returns (bool){
         if(getOwner() == msg.sender){
-            
             return payable(address(this)).send(msg.value);
-           
         }
         return false;
     }
@@ -52,7 +47,6 @@ contract SecretWord {
             word = _word;
             return true;
         }
-
         return false;
     }
     
